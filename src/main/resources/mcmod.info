@@ -1,0 +1,16 @@
+[
+{
+  "modid": "cram",
+  "name": "CRAM",
+  "description": "Crafting Recipe Additions to Minecraft",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["SoulSkin"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
