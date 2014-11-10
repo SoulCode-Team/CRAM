@@ -1,3 +1,4 @@
+// loads ForgeGradle //
 buildscript {
     repositories {
         mavenCentral()
@@ -10,82 +11,101 @@ buildscript {
             url = "https://oss.sonatype.org/content/repositories/snapshots/"
         }
     }
-    dependencies {
-        classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT'
-    }
+    dependencies { classpath 'net.minecraftforge.gradle:ForgeGradle:1.2-SNAPSHOT' }
 }
+apply plugin: "forge"
 
-apply plugin: 'forge'
-
+// .properties file loader //
 ext.configFile = file "build.properties"
-
 configFile.withReader {
     def prop = new Properties()
     prop.load(it)
     project.ext.config = new ConfigSlurper().parse prop
 }
 
+// Mod specific stuff //
+group = config.group
 version = config.minecraft_version + "-" + config.mod_version
-group = config.group // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = config.archiveBaseName
+archivesBaseName = config.archivesBaseName
+build_append = ""
+full_build = true
+
+// Jenkins build append
+if (System.getenv()['BUILD_NUMBER']) {
+    build_append = "-jnks" + System.getenv()['BUILD_NUMBER']
+	project.full_build = false
+}
+
+// Drone.io build append
+if(System.getenv().DRONE_BUILD_NUMBER)
+{
+	build_append = "-droneio" + System.getenv().DRONE_BUILD_NUMBER
+	project.full_build = false
+}
 
 minecraft {
     version = config.minecraft_version + "-" + config.forge_version
-    if (file('../run').exists()) {
-		runDir = '../run/assets'
-	} else {
-		runDir = "assets"
-	}
 	
 	replaceIn "reference/Reference.java"
-	replace "@VERSION@", "${project.version}"
-	if (project.hasProperty("AC_signature")) {
-        replace "@FINGERPRINT@", project.AC_signature
+    replace "@VERSION@", "${config.mod_version}.${project.build_append}"
+    if (project.hasProperty("Mod_signature")) {
+        replace "@FINGERPRINT@", project.Mod_signature
     }
 }
 
 dependencies {
-    // you may put jars on which you depend on in ./libs
-    // or you may define them like so..
-    //compile "some.group:artifact:version:classifier"
-    //compile "some.group:artifact:version"
-      
-    // real examples
-    //compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'  // adds buildcraft to the dev env
-    //compile 'com.googlecode.efficient-java-matrix-library:ejml:0.24' // adds ejml to the dev env
-	
-	//compile 'com.mod-buildcraft:buildcraft:6.0.8:dev'
-	compile files("src/api/buildcraft-5.0.7-dev.jar")
-
-    // for more info...
-    // http://www.gradle.org/docs/current/userguide/artifact_dependencies_tutorial.html
-    // http://www.gradle.org/docs/current/userguide/dependency_management.html
-
 }
 
-processResources
-{
-    // this will ensure that this task is redone when the versions change.
+processResources {
+	// this will ensure that this task is redone when the versions change.
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
-
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
+	
+	// Replace info in files
+	from(sourceSets.main.resources.srcDirs) {
+        include '**/*.lang'
+        include '**/*.info'
+        include '**/*.properties'
                 
         // replace version and mcversion
         expand 'version':project.version, 'mcversion':project.minecraft.version
-		
-//		//replace modID and modName
-//		expand 'modID':project.modID, 'modName':"modName"
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
     }
 	
-	jar {
-    from configurations.compile.collect { it.isDirectory() ? it : zipTree(it) }
+	/ copy everything else, thats not the files above
+    from(sourceSets.main.resources.srcDirs) {
+        exclude '**/*.lang'
+        exclude '**/*.info'
+        exclude '**/*.properties'
+    }
 }
+
+
+jar {
+	classifier = "universal"
 }
+
+// add a source jar
+task sourceJar(type: Jar) {
+    from sourceSets.main.allSource
+    classifier = 'src'
+}
+
+// add a deobfuscated jar
+task deobfJar(type: Jar) {
+    from sourceSets.main.output
+    classifier = 'deobf'
+}
+
+artifacts {
+	if(project.full_build) {
+		archives sourceJar
+		archives deobfJar
+	}
+}
+
+This is a footer. This is only a footer. In the event that the footer does speak, we urge you to disregard its advice.
+
+This code is taken from many other build.gradle's and is meant only to build the best mod ever.
+Please use and dissect this code to better improve your own code.
+This script was written without full understanding of ForgeGradle.
+© 2014 The World At Large (we are the world, we are the children)
