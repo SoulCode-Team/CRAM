@@ -27,19 +27,19 @@ configFile.withReader {
 group = config.group
 version = config.minecraft_version + "-" + config.mod_version
 archivesBaseName = config.archivesBaseName
-build_append = ""
+project.build_append = ""
 full_build = true
 
 // Jenkins build append //
 if (System.getenv()['BUILD_NUMBER']) {
-    build_append = "-jnks" + System.getenv()['BUILD_NUMBER']
+    project.build_append = "-jnks" + System.getenv()['BUILD_NUMBER']
 	project.full_build = false
 }
 
 // Drone.io build append //
 if(System.getenv().DRONE_BUILD_NUMBER)
 {
-	build_append = "-droneio" + System.getenv().DRONE_BUILD_NUMBER
+	project.build_append = "-droneio" + System.getenv().DRONE_BUILD_NUMBER
 	project.full_build = false
 }
 
