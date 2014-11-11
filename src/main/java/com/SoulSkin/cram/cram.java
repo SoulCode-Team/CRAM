@@ -37,7 +37,7 @@ public class cram {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		ModLogger.info(StringUtils.localize("mod.loadingMessage") + Reference.MOD_NAME);
+		ModLogger.info("Loading " + Reference.MOD_NAME);
 		proxy.registerRenderers();
 
 		ConfigHandler.init(event.getSuggestedConfigurationFile());
