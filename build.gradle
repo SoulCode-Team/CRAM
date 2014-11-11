@@ -32,16 +32,18 @@ boolean full_build = true
 
 // Jenkins build append //
 if (System.getenv()['BUILD_NUMBER']) {
-    build_append = "-jnks" + System.getenv()['BUILD_NUMBER']
+    build_append = "jnks" + System.getenv()['BUILD_NUMBER']
 	full_build = false
 }
 
 // Drone.io build append //
 if(System.getenv().DRONE_BUILD_NUMBER)
 {
-	build_append = "-droneio" + System.getenv().DRONE_BUILD_NUMBER
+	build_append = "droneio" + System.getenv().DRONE_BUILD_NUMBER
 	full_build = false
 }
+
+version += build_append
 
 minecraft {
 	version = config.minecraft_version + "-" + config.forge_version
