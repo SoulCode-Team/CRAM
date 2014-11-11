@@ -27,27 +27,27 @@ configFile.withReader {
 group = config.group
 version = config.minecraft_version + "-" + config.mod_version
 archivesBaseName = config.archivesBaseName
-project.build_append = ""
-full_build = true
+String build_append = ""
+boolean full_build = true
 
 // Jenkins build append //
 if (System.getenv()['BUILD_NUMBER']) {
-    project.build_append = "-jnks" + System.getenv()['BUILD_NUMBER']
-	project.full_build = false
+    build_append = "-jnks" + System.getenv()['BUILD_NUMBER']
+	full_build = false
 }
 
 // Drone.io build append //
 if(System.getenv().DRONE_BUILD_NUMBER)
 {
-	project.build_append = "-droneio" + System.getenv().DRONE_BUILD_NUMBER
-	project.full_build = false
+	build_append = "-droneio" + System.getenv().DRONE_BUILD_NUMBER
+	full_build = false
 }
 
 minecraft {
-    version = config.minecraft_version + "-" + config.forge_version
+	version = config.minecraft_version + "-" + config.forge_version
 	
 	replaceIn "reference/Reference.java"
-    replace "@VERSION@", "${config.mod_version}.${project.build_append}"
+    replace "@VERSION@", "${config.mod_version}.${build_append}"
     if (project.hasProperty("Mod_signature")) {
         replace "@FINGERPRINT@", project.Mod_signature
     }
@@ -97,7 +97,7 @@ task deobfJar(type: Jar) {
 }
 
 artifacts {
-	if(project.full_build) {
+	if(full_build) {
 		archives sourceJar
 		archives deobfJar
 	}
