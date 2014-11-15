@@ -1,26 +1,22 @@
 package com.SoulSkin.cram;
 
-import net.minecraft.item.Item;
-
-import com.SoulSkin.cram.handler.ConfigHandler;
-import com.SoulSkin.cram.handler.GameRegisteryHandler;
-import com.SoulSkin.cram.handler.IntegrationHandler;
-import com.SoulSkin.cram.handler.OreDictionaryHandler;
-import com.SoulSkin.cram.handler.RecipeHandler;
-import com.SoulSkin.cram.item.unlocalizedFinder;
+import com.SoulSkin.cram.handler.*;
+import com.SoulSkin.cram.item.tool.AdminSword;
+import com.SoulSkin.cram.item.tool.unlocalizedFinder;
 import com.SoulSkin.cram.proxy.CommonProxy;
 import com.SoulSkin.cram.reference.Reference;
 import com.SoulSkin.cram.util.ModLogger;
 import com.SoulSkin.cram.util.StringUtils;
 import com.SoulSkin.cram.util.removeVanillaRecipe;
-
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import net.minecraft.item.Item;
 
 @Mod(name = Reference.MOD_NAME, version = Reference.VERSION, useMetadata = false, modid = Reference.MOD_ID)
 // , guiFactory =Reference.GUI_FACTORY_CLASS
@@ -34,6 +30,7 @@ public class cram {
 
 	// Define Tools//
 	public static Item unlocalizedFinder;
+	public static Item adminSword;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -45,12 +42,17 @@ public class cram {
 		if (ConfigHandler.enableUnlocalizeFinder) {
 			unlocalizedFinder = new unlocalizedFinder();
 		}
+		if (ConfigHandler.enableAdminSword) {
+			adminSword = new AdminSword();
+		}
 
 		GameRegisteryHandler.registerAll();
 		OreDictionaryHandler.registerAll();
 
 		RecipeHandler.craftingAll();
 		IntegrationHandler.buildCraftInIt();
+
+		FMLInterModComms.sendMessage("OpenBlocks", "donateUrl", "http://www.railcraft.info/donate/");
 
 	}
 

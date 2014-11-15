@@ -1,10 +1,8 @@
 package com.SoulSkin.cram.util;
 
-import org.apache.logging.log4j.Level;
-
 import com.SoulSkin.cram.reference.Reference;
-
 import cpw.mods.fml.common.FMLLog;
+import org.apache.logging.log4j.Level;
 
 public class ModLogger {
 	public static void log(Level logLevel, Object object) {

@@ -1,14 +1,12 @@
 package com.SoulSkin.cram.handler;
 
-import java.io.File;
-
-import net.minecraftforge.common.config.Configuration;
-
 import com.SoulSkin.cram.reference.Reference;
 import com.SoulSkin.cram.util.ModLogger;
-
 import cpw.mods.fml.client.event.ConfigChangedEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.common.config.Configuration;
+
+import java.io.File;
 
 public class ConfigHandler {
 	public static Configuration config;
@@ -34,6 +32,7 @@ public class ConfigHandler {
 
 	public static String disableCrafting;
 	public static boolean enableUnlocalizeFinder;
+	public static boolean enableAdminSword;
 
 	public static void loadConfigs() {
 		ModLogger.info("Loading Configs");
@@ -41,7 +40,8 @@ public class ConfigHandler {
 		disableCrafting = config.get(Reference.DISABLE_CRAFTING_CATEGORY, "Crafting Recipes to Disable", "", "These Items will have all recipes removed (comma separated (eg. minecraft:string,buildcraft:woodenGearItem))").getString();
 
 		// Configs for Tools//
-		enableUnlocalizeFinder = config.get(Reference.DISABLE_CRAFTING_CATEGORY, "Enable Unlocalized Name Finder", true, "Shows the unlocalized name of the block clicked on").getBoolean();
+		enableUnlocalizeFinder = config.get(Reference.DISABLE_ITEM_CATEGORY, "Enable Unlocalized Name Finder", true, "Shows the unlocalized name of the block clicked on").getBoolean();
+		enableAdminSword = config.get(Reference.DISABLE_ITEM_CATEGORY, "Enable Admin Sword", true, "one-shot kills ANYTHING").getBoolean();
 
 		if (config.hasChanged()) {
 			config.save();

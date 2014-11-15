@@ -1,7 +1,6 @@
 package com.SoulSkin.cram.handler;
 
 import com.SoulSkin.cram.util.LoaderHelper;
-
 import cpw.mods.fml.common.Loader;
 
 public class LoadedModsHandler {

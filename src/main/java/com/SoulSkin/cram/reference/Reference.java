@@ -15,6 +15,15 @@ public class Reference {
 
 	// Config Categories//
 	public static final String DISABLE_CRAFTING_CATEGORY = "Disable_Crafting";
+	public static final String DISABLE_ITEM_CATEGORY = "Disable_Items";
+
+	// Texture locations //
+	public static final String TOOL_FOLDER = "tool/";
+	public static final String FOOD_FOLDER = "food/";
+	public static final String ARMOR_FOLDER = "armor/";
+	public static final String ARMOR_SUIT_FOLDER = "armor/suit/";
+	public static final String ARMOR_OVERLAY_FOLDER = "textures/models/armor/";
+	public static final String GUI_FOLDER = "gui/";
 
 	// General texture references //
 	public static final String IMG_EXTENSION = ".png";

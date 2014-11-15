@@ -1,9 +1,8 @@
 package com.SoulSkin.cram.proxy;
 
-import org.lwjgl.input.Keyboard;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
+import org.lwjgl.input.Keyboard;
 
 public abstract class CommonProxy implements IProxy {
 
@@ -30,7 +29,7 @@ public abstract class CommonProxy implements IProxy {
 	}
 
 	public static Object additionalInfoInstructions() {
-		String message = "§oPress §b<SHIFT>§7§o for more information.";
+		String message = "ï¿½oPress ï¿½b<SHIFT>ï¿½7ï¿½o for more information.";
 		return message;
 	}
 }

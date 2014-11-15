@@ -1,7 +1,6 @@
 package com.SoulSkin.cram.handler;
 
 import com.SoulSkin.cram.cram;
-
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class GameRegisteryHandler {

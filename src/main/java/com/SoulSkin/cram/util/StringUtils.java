@@ -18,6 +18,10 @@ public class StringUtils {
 	public static boolean isNullOrEmpty(String str) {
 		return str == null || "".equals(str);
 	}
+	
+	public static boolean isNullOrEmpty(String[] str) {
+		return (str == null || str.length <= 0 || "".equals(str));
+	}
 
 	public static String localize(String unlocalized) {
 		return StatCollector.translateToLocal(unlocalized);

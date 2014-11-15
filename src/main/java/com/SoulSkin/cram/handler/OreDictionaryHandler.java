@@ -1,11 +1,10 @@
 package com.SoulSkin.cram.handler;
 
+import com.SoulSkin.cram.cram;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-
-import com.SoulSkin.cram.cram;
 
 public class OreDictionaryHandler {
 	public static cram MOD;

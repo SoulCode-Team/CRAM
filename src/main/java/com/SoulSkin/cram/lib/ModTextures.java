@@ -1,10 +1,9 @@
 package com.SoulSkin.cram.lib;
 
+import com.SoulSkin.cram.reference.Reference;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.util.ResourceLocation;
-
-import com.SoulSkin.cram.reference.Reference;
 
 public class ModTextures {
 	public static String FormatUnlocalized(Item item) {

@@ -1,5 +1,9 @@
 mod.loadingMessage=Loading 
 
+death.attack.byAdmin.player=By An Admin
+
 item.unlocalizedFinder.name=Unlocalized Name Finder
 item.unlocalizedFinder.tooltip1=Right Click on block or craft with any item
 item.unlocalizedFinder.tooltip2=to find its unlocalized name.
+
+item.adminSword.name=Admin Sword
