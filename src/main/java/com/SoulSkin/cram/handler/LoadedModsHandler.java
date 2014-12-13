@@ -38,104 +38,104 @@ public class LoadedModsHandler {
 	public static final String Mekanism = "Mekanism";
 
 	// Mod Loaded Checks //
-	public static boolean isBuildcraftLoaded() {
-		return Loader.isModLoaded(BuildCraftCore);
+	public static boolean isBuildcraftLoaded () {
+		return Loader.isModLoaded (BuildCraftCore);
 	}
 
-	public static boolean isBuildcraftLoaded(String subMod) {
-		return Loader.isModLoaded(BuildCraftNameBase + subMod);
+	public static boolean isBuildcraftLoaded (String subMod) {
+		return Loader.isModLoaded (BuildCraftNameBase + subMod);
 	}
 
-	public static boolean isThaumcraftLoaded() {
-		return Loader.isModLoaded(Thaumcraft);
+	public static boolean isThaumcraftLoaded () {
+		return Loader.isModLoaded (Thaumcraft);
 	}
 
-	public static boolean isMekanismLoaded() {
-		return Loader.isModLoaded(Mekanism);
+	public static boolean isMekanismLoaded () {
+		return Loader.isModLoaded (Mekanism);
 	}
 
-	public static boolean isAE2Loaded() {
-		return Loader.isModLoaded(AE2);
+	public static boolean isAE2Loaded () {
+		return Loader.isModLoaded (AE2);
 	}
 
-	public static boolean isBigReactorsLoaded() {
-		return Loader.isModLoaded(BigReactors);
+	public static boolean isBigReactorsLoaded () {
+		return Loader.isModLoaded (BigReactors);
 	}
 
-	public static boolean isBloodMagicLoaded() {
-		return Loader.isModLoaded(BloodMagic);
+	public static boolean isBloodMagicLoaded () {
+		return Loader.isModLoaded (BloodMagic);
 	}
 
-	public static boolean isBotaniaLoaded() {
-		return Loader.isModLoaded(Botania);
+	public static boolean isBotaniaLoaded () {
+		return Loader.isModLoaded (Botania);
 	}
 
-	public static boolean isCarpentersBlocksLoaded() {
-		return Loader.isModLoaded(CarpentersBlocks);
+	public static boolean isCarpentersBlocksLoaded () {
+		return Loader.isModLoaded (CarpentersBlocks);
 	}
 
-	public static boolean isComputercraftLoaded() {
-		return Loader.isModLoaded(ComputerCraft);
+	public static boolean isComputercraftLoaded () {
+		return Loader.isModLoaded (ComputerCraft);
 	}
 
-	public static boolean isEnderIOLoaded() {
-		return Loader.isModLoaded(EnderIO);
+	public static boolean isEnderIOLoaded () {
+		return Loader.isModLoaded (EnderIO);
 	}
 
-	public static boolean isEnderStorageLoaded() {
-		return Loader.isModLoaded(EnderStorage);
+	public static boolean isEnderStorageLoaded () {
+		return Loader.isModLoaded (EnderStorage);
 	}
 
-	public static boolean isExtraUtilitiesLoaded() {
-		return Loader.isModLoaded(ExtraUtilities);
+	public static boolean isExtraUtilitiesLoaded () {
+		return Loader.isModLoaded (ExtraUtilities);
 	}
 
-	public static boolean isExtraUtilsLoaded() {
-		return isExtraUtilitiesLoaded();
+	public static boolean isExtraUtilsLoaded () {
+		return isExtraUtilitiesLoaded ();
 	}
 
-	public static boolean isFactorizationLoaded() {
-		return Loader.isModLoaded(Factorization);
+	public static boolean isFactorizationLoaded () {
+		return Loader.isModLoaded (Factorization);
 	}
 
-	public static boolean isForestryLoaded() {
-		return Loader.isModLoaded(Forestry);
+	public static boolean isForestryLoaded () {
+		return Loader.isModLoaded (Forestry);
 	}
 
-	public static boolean isIguanaTweaksLoaded() {
-		return Loader.isModLoaded(IguanaTweaks);
+	public static boolean isIguanaTweaksLoaded () {
+		return Loader.isModLoaded (IguanaTweaks);
 	}
 
-	public static boolean isIndustrialCraft2Loaded() {
-		return Loader.isModLoaded(IndustrialCraft2);
+	public static boolean isIndustrialCraft2Loaded () {
+		return Loader.isModLoaded (IndustrialCraft2);
 	}
 
-	public static boolean isIC2Loaded() {
-		return isIndustrialCraft2Loaded();
+	public static boolean isIC2Loaded () {
+		return isIndustrialCraft2Loaded ();
 	}
 
-	public static boolean isInventoryTweaksLoaded() {
-		return Loader.isModLoaded(InventoryTweaks);
+	public static boolean isInventoryTweaksLoaded () {
+		return Loader.isModLoaded (InventoryTweaks);
 	}
 
-	public static boolean isIronChestsLoaded() {
-		return Loader.isModLoaded(IronChests);
+	public static boolean isIronChestsLoaded () {
+		return Loader.isModLoaded (IronChests);
 	}
 
-	public static boolean isJabbaLoaded() {
-		return Loader.isModLoaded(Jabba);
+	public static boolean isJabbaLoaded () {
+		return Loader.isModLoaded (Jabba);
 	}
 
-	public static boolean isLogisticsPipesLoaded() {
-		return Loader.isModLoaded(Jabba);
+	public static boolean isLogisticsPipesLoaded () {
+		return Loader.isModLoaded (Jabba);
 	}
 
 	// Multi-mod checks //
-	public static boolean areChunkLoadersPresent() {
-		return Loader.isModLoaded("ChickenChunks") || Loader.isModLoaded("RailCraft");
+	public static boolean areChunkLoadersPresent () {
+		return Loader.isModLoaded ("ChickenChunks") || Loader.isModLoaded ("RailCraft");
 	}
 
-	public static boolean areMapsPresent() {
-		return Loader.isModLoaded("opis") || LoaderHelper.isWildcardModLoaded("map");
+	public static boolean areMapsPresent () {
+		return Loader.isModLoaded ("opis") || LoaderHelper.isWildcardModLoaded ("map");
 	}
 }

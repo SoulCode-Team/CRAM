@@ -4,11 +4,11 @@ package com.SoulSkin.cram.handler;
 
 public class IntegrationHandler {
 
-	public static void buildCraftInIt() {
-		addSoftBlocks();
+	public static void buildCraftInIt () {
+		addSoftBlocks ();
 	}
 
-	public static void addSoftBlocks() {
+	public static void addSoftBlocks () {
 		// BuildCraftAPI.softBlocks.add(GameRegistry.findBlock("AWWayofTime",
 		// "blockBloodLightSource"));
 	}

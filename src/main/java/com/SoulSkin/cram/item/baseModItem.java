@@ -9,14 +9,14 @@ import net.minecraft.item.Item;
 
 public class baseModItem extends Item {
 
-	public baseModItem() {
-		super();
-		this.setMaxStackSize(64);
-		this.setCreativeTab(CreativeTabs.tabMisc);
+	public baseModItem () {
+		super ();
+		this.setMaxStackSize (64);
+		this.setCreativeTab (CreativeTabs.tabMisc);
 	}
 
-	@SideOnly(Side.CLIENT)
-	public void registerIcons(IIconRegister par1registerIcon) {
-		this.itemIcon = par1registerIcon.registerIcon(ModTextures.GetTextureNameFull(this));
+	@SideOnly (Side.CLIENT)
+	public void registerIcons (IIconRegister par1registerIcon) {
+		this.itemIcon = par1registerIcon.registerIcon (ModTextures.GetTextureNameFull (this));
 	}
 }

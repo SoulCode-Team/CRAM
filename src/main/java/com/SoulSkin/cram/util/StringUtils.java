@@ -4,27 +4,27 @@ import net.minecraft.util.StatCollector;
 
 public class StringUtils {
 
-	public static String[] GetStringList(String str) {
-		return GetStringList(str, ",");
+	public static String[] GetStringList (String str) {
+		return GetStringList (str, ",");
 	}
 
-	public static String[] GetStringList(String str, String splitter) {
-		return str.split(splitter);
+	public static String[] GetStringList (String str, String splitter) {
+		return str.split (splitter);
 	}
 
 	/**
 	 * Returns a value indicating whether the given string is null or empty.
 	 */
-	public static boolean isNullOrEmpty(String str) {
-		return str == null || "".equals(str);
-	}
-	
-	public static boolean isNullOrEmpty(String[] str) {
-		return (str == null || str.length <= 0 || "".equals(str));
+	public static boolean isNullOrEmpty (String str) {
+		return str == null || "".equals (str);
 	}
 
-	public static String localize(String unlocalized) {
-		return StatCollector.translateToLocal(unlocalized);
+	public static boolean isNullOrEmpty (String[] str) {
+		return (str == null || str.length <= 0 || "".equals (str));
+	}
+
+	public static String localize (String unlocalized) {
+		return StatCollector.translateToLocal (unlocalized);
 
 	}
 }

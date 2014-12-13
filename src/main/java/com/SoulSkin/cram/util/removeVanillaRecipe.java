@@ -12,25 +12,25 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public class removeVanillaRecipe {
-	@SuppressWarnings("unchecked")
-	public static void remove(Item removeItem) {
-		Collection<Item> removeSet = new HashSet<Item>();
-		Collections.addAll(removeSet, removeItem);
-		Iterator<IRecipe> iterator = CraftingManager.getInstance().getRecipeList().iterator();
+	@SuppressWarnings ("unchecked")
+	public static void remove (Item removeItem) {
+		Collection<Item> removeSet = new HashSet<Item> ();
+		Collections.addAll (removeSet, removeItem);
+		Iterator<IRecipe> iterator = CraftingManager.getInstance ().getRecipeList ().iterator ();
 
-		while (iterator.hasNext()) {
-			IRecipe recipe = iterator.next();
+		while (iterator.hasNext ()) {
+			IRecipe recipe = iterator.next ();
 			if (recipe == null)
 				continue;
-			ItemStack output = recipe.getRecipeOutput();
-			if (output != null && output.getItem() != null && removeSet.contains(output.getItem()))
-				iterator.remove();
+			ItemStack output = recipe.getRecipeOutput ();
+			if (output != null && output.getItem () != null && removeSet.contains (output.getItem ()))
+				iterator.remove ();
 		}
 	}
 
-	public static void removeFromString(String sItem) {
-		String[] splitItem = sItem.split(":");
-		Item item = GameRegistry.findItem(splitItem[0], splitItem[1]);
-		remove(item);
+	public static void removeFromString (String sItem) {
+		String[] splitItem = sItem.split (":");
+		Item item = GameRegistry.findItem (splitItem[0], splitItem[1]);
+		remove (item);
 	}
 }
